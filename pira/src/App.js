@@ -9,6 +9,7 @@ import {
   InfoWindow
  
 } from '@react-google-maps/api'
+import DropDown from './components/dropdown.js';
 import { formatRelative } from "date-fns";
 
 
@@ -62,7 +63,7 @@ export default function App() {
     return "Loading maps";
   }
   return <div className="MapDiv">
-
+    <DropDown/>
     <GoogleMap mapContainerStyle={mapContainerStyle}
               zoom={13}
               center={center}
@@ -84,4 +85,5 @@ export default function App() {
     
     
   </div>
+  
 }
