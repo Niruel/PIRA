@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './style.css';
-import  cityData from './data/csvjson.json';
+import  cityData from './data/locations.json';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {
   GoogleMap,
   useLoadScript,
   Marker
- 
-} from '@react-google-maps/api'
+} from '@react-google-maps/api';
 import HomePage from './components/HomePage';
 import UPLOAD_STATE_PAGE from './components/UPLOAD_STATE_PAGE';
 import REGISTER_PAGE from './components/REGISTER_PAGE';
@@ -56,7 +55,8 @@ export default function App() {
       ...current,
       {
         lat: e.latLng.lat(),
-        lng: e.latLng.lng()
+        lng: e.latLng.lng(),
+        time: new Date(),
       },
     ]);
   }, []); 
@@ -86,7 +86,10 @@ export default function App() {
    for (let index = 0; index < cityData.length; index++) {
      const element = cityData[index];
      if(element.category==="Roads/highways"){
-       roads.push(element)
+        if (!roads.includes(element)) {
+          roads.push(element);
+        }
+       
      }
      
    }
@@ -99,7 +102,10 @@ export default function App() {
   for (let index = 0; index < cityData.length; index++) {
     const element = cityData[index];
     if(element.category==="Pavements/footpaths"){
-      pavement.push(element)
+      if (!pavement.includes(element)) {
+        pavement.push(element);   
+      }
+     
     }
     
   }
@@ -108,7 +114,10 @@ const setPotHolesArray = () =>{
   for (let index = 0; index < cityData.length; index++) {
     const element = cityData[index];
     if(element.category==="Potholes"){
-      potHoles.push(element)
+      if (!potHoles.includes(element)) {
+        potHoles.push(element);
+      }
+      
     }
     
   }
@@ -119,7 +128,7 @@ const setPotHolesArray = () =>{
     var fisable =true;
     for (let index = 0; index < cityData.length; index++) {
       const element = cityData[index];
-      if (markerCat.category === "Roads/highways" || markerCat.category===undefined|| markerCat.category==="all") {
+      if (markerCat.category === "Roads/highways" || markerCat.category===undefined|| markerCat.category==="Choose a category") {
         
         return fisable;
   
@@ -133,7 +142,7 @@ const setPotHolesArray = () =>{
     var fisable =true;
     for (let index = 0; index < cityData.length; index++) {
       const element = cityData[index];
-      if (markerCat.category === "Pavements/footpaths"|| markerCat.category===undefined|| markerCat.category==="all") {
+      if (markerCat.category === "Pavements/footpaths"|| markerCat.category===undefined|| markerCat.category==="Choose a category") {
         
         return fisable;
   
@@ -147,7 +156,7 @@ const setPotHolesArray = () =>{
     var fisable =true;
     for (let index = 0; index < cityData.length; index++) {
       const element = cityData[index];
-      if (markerCat.category === "Potholes"|| markerCat.category===undefined|| markerCat.category==="all") {
+      if (markerCat.category === "Potholes"|| markerCat.category===undefined|| markerCat.category==="Choose a category") {
         
         return fisable;
   
@@ -178,7 +187,7 @@ const setPotHolesArray = () =>{
                         
                         {unique.map( items => (
                           <option 
-                            key = {items.created}
+                            key = {items.key}
                             value= {items.category}>
                             {items.category}
                           </option>
@@ -195,40 +204,53 @@ const setPotHolesArray = () =>{
               onClick= {onMapClick}>
                 {markers.map(marker=>(
                   <Marker
-                    key={marker.created}
+                    key={marker.time.toISOString()}
                     position = {{
                       lat: marker.lat,
                       lng: marker.lng
                     }}
+                    
                   />
                 ))};
                  {roads.map(road =>(
                    <Marker
                    visible= {RoadVisable()}
-                   key = {road.created}
+                   key = {road.key}
                    position= {{
                     lat:road.latitude, 
                     lng:road.longitude 
+                  }}
+                  icon= {{
+                    url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
+                    scaledSize: new window.google.maps.Size(45, 45),
                   }}
                    />    
                 ))};
                 {pavement.map(pavement =>(
                    <Marker
                    visible= {PavVisable()}
-                   key = {pavement.created}
+                   key = {pavement.key}
                    position= {{
                     lat:pavement.latitude, 
                     lng:pavement.longitude 
+                  }}
+                  icon= {{
+                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                    scaledSize: new window.google.maps.Size(45, 45),
                   }}
                    />     
                 ))};
                 {potHoles.map(potHoles =>(
                    <Marker
                    visible= {PotVisable()}
-                   key = {potHoles.created}
+                   key = {potHoles.key}
                    position= {{
                     lat:potHoles.latitude, 
                     lng:potHoles.longitude 
+                  }}
+                  icon= {{
+                    url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+                    scaledSize: new window.google.maps.Size(45, 45),
                   }}
                    />     
                 ))};

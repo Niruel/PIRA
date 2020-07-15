@@ -19,12 +19,12 @@ class UPLOAD_STATE_PAGE extends Component{
       </tr>
       
       <tr>
-        <td>Catagory</td>
+        <td>Category</td>
       </tr>
 
       <tr>
         <td><select name="Catagory">
-          <option value="Catagory">Catagory</option>
+          <option value="Catagory">Category</option>
           <option value="1">Roads/Highways</option>
           <option value="2">Pavements/Footpaths</option>
           <option value="3">Potholes</option>
