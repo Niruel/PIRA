@@ -1,0 +1,160 @@
+
+
+body{background-color: grey;}
+
+/* LOGO */
+.logo{
+	overflow: hidden;
+	background-color: #333;
+	font-family: Arial;
+}
+
+.logo a{
+  float: left;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; 
+  margin: 14px; 
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* title */
+.title {
+	text-align: center;
+	font-family: Arial;
+	font-size: 20px;
+}
+/* wording */
+.wording{
+	text-align: center;
+	font-family: Arial;
+	font-size: 10px;
+}
+
+/* table */
+.table{
+	margin:auto;
+	font-family: Arial;
+}
+
+.table2{
+	margin: auto;
+	font-family: Arial;
+	text-align: center;
+}
+
+.table2 tr td select{
+	width: 270px;
+}
+
+/* button */
+div.button{
+	text-align: center;
+	font-family: Arial;
+	color: white;
+	}
+
+div.button input{
+	padding: 7px;
+	width: 250px;
+	font-size: 12px;
+	background-color: #333;
+	color: white;
+	font-family: Arial;
+}
+
+/* file upload */
+.fileupload{
+	text-align: center;
+	font-family: Arial;
+	padding: 7px;
+	color: white;
+}
+
+/* copyright */
+.copyright{
+	overflow: hidden;
+	background-color: #333;
+	font-family: Arial;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.MapDiv{
+  margin-left: 37vw;
+  border: white,2px;
+}
+.blow{
+  height: 100vh;
+  width: 100vw;
+}
+
+	
+	
